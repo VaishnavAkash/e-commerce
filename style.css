@@ -624,6 +624,10 @@ footer .copyright{
     margin-right: 50px;
 }
 
+#category{
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
 #mainImg{
     width: 383.350px;
     height: 511px; 
@@ -931,6 +935,7 @@ footer .copyright{
 
 #cart table img{
     width: 70px;
+    height: 70px;
 }
 
 #cart table td:nth-child(1){

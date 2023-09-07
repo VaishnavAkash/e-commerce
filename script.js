@@ -4,6 +4,8 @@ const nav= document.getElementById('navbar');
 const mainImage= document.getElementById('mainImg');
 const smallImg = document.querySelectorAll('.small-image');
 const idxProContainer= document.getElementsByClassName('pro-container')[0];
+let cartItemsContainer= document.getElementById('cartItemsContainer');
+console.log(cartItemsContainer)
 // opening and closing the menu
 
 
@@ -181,25 +183,44 @@ function renderData(){
 })
 }
 
-function renderCart(items){
-    function changeCost(e){
-        console.log(e);
-    }
+function removeCartItems(id){
+    const cartItem= JSON.parse(localStorage.getItem('cartItems'));
+    const newItems=cartItem.filter((eI)=>{
+        return eI.id!=id;
+    })
+    localStorage.setItem('cartItems',JSON.stringify(newItems));
+    renderCart();
+}
+function renderCart(){
+    const items= JSON.parse(localStorage.getItem('cartItems'));
     const cartItemsContainer = document.getElementById('cartItemsContainer');
+    const totalCost= document.getElementById('totalCost');
     const newItems= items.map((eItem,idx)=>{
         return `<tr>
         <td>
-        <a href=""><i class="far fa-times-circle"></i></a></i>
+        <a href="#"><i id=${eItem.id} class="far fa-times-circle removeItem"></i></a></i>
         </td>
         <td><img src=${eItem.image} alt=""></td>
         <td>${eItem.title}</td>
         <td>${eItem.price}$</td>
-        <td><input type="number" value=${eItem.quantity} onChange="changeCost()"></td>
-        <td>${eItem.subTotal}</td>
+        <td><input type="number" value=${eItem.quantity} disabled></td>
+        <td>$ ${eItem.subTotal}</td>
         </tr>`
     })
+    let savedItems= JSON.parse(localStorage.getItem('cartItems'))
+   try{ if(savedItems){
+        const totalPrice=savedItems.reduce((acc,curr)=>{
+            console.log(acc.subTotal+curr.subTotal);
+            return acc.subTotal+curr.subTotal;  
+        })
+        totalCost.innerText= totalPrice; 
+    }}
+    catch(error){
+        console.log(error.message)
+    }
+    if(items.length!=0) document.querySelector('.dummyItems').style.display= 'none'; 
+    else document.querySelector('.dummyItems').style.display= 'flex'; 
     cartItemsContainer.innerHTML= newItems;
-    console.log(newItems)
 }
 
 function changeLocation(eItem){

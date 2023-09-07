@@ -211,6 +211,7 @@
        const quantity= document.getElementById('quantity');
        const item= JSON.parse(localStorage.getItem('selectedItem'))[0];
        const addToCartBtn= document.getElementById('addToCart');
+       let subtotal;
     function renderData(){
         console.log(item);
         title.innerText= item?.title;
@@ -221,6 +222,7 @@
     renderData();
 
     function changeCost (){
+        subtotal= item.price*quantity.value;
         price.innerText= `$ ${item.price*quantity.value}`;
     }
 
@@ -229,13 +231,14 @@
         function addToCart(e){
             e.preventDefault();
             if(quantity.value==0) return;
+            if(item.price==subtotal) subtotal= item.price;
             const obj= {
                 id: item.id,
                 image: item.image,
                 title: item.title,
                 price: item.price,
                 quantity: quantity.value,
-                subTotal: price.innerText
+                subTotal: subtotal
             }
             let cartItems=JSON.parse(localStorage.getItem('cartItems'));
             cartItems= cartItems?cartItems:[];
