@@ -31,19 +31,8 @@
    <section id="prodetails" class="section-p1">
         <div class="single-pro-image">
             <img src="https://i5.walmartimages.com/asr/b277ac73-be27-4ee8-b5ab-796e59b4f20a.2d67642919e472c10329daf19a6145e8.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF" width="100%" id="mainImg" alt="">
-            <div class="small-image-group">
-                <div class="small-image-col">
-                    <img src="img/products/f1.jpg" width="100%" class="small-image" alt="">
-                </div>
-                <div class="small-image-col">
-                    <img src="img/products/f2.jpg" width="100%" class="small-image" alt="">
-                </div>
-                <div class="small-image-col">
-                    <img src="img/products/f3.jpg" width="100%" class="small-image" alt="">
-                </div>
-                <div class="small-image-col">
-                    <img src="img/products/f4.jpg" width="100%" class="small-image" alt="">
-                </div>
+            <div class="small-image-group" id="smallImagesDiv">
+               
             </div>
         </div>
         
@@ -68,71 +57,8 @@
    <section id="product1" class="section-p1">
     <h2>Featured Product</h2>
     <p>Summer Collection New Morden Design</p>
-    <div class="pro-container">
-        <div class="pro">
-            <img src="img/products/n1.jpg" alt="">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Cartoon Astronaut T-Shirts</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$78</h4>
-            </div>
-            <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-        </div>
-        <div class="pro">
-            <img src="img/products/n2.jpg" alt="">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Cartoon Astronaut T-Shirts</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$78</h4>
-            </div>
-            <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-        </div>
-        <div class="pro">
-            <img src="img/products/n3.jpg" alt="">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Cartoon Astronaut T-Shirts</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$78</h4>
-            </div>
-            <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-        </div>
-        <div class="pro">
-            <img src="img/products/n4.jpg" alt="">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Cartoon Astronaut T-Shirts</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$78</h4>
-            </div>
-            <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-        </div>
+    <div class="pro-container" id="singlePageContainer">
+       
     </div>
    </section>
 
@@ -211,16 +137,17 @@
        const quantity= document.getElementById('quantity');
        const item= JSON.parse(localStorage.getItem('selectedItem'))[0];
        const addToCartBtn= document.getElementById('addToCart');
-       let subtotal;
-    function renderData(){
-        console.log(item);
+       let subtotal= item.price;
+    function renderTopData(){
         title.innerText= item?.title;
         img.src= item?.image;
         price.innerText= `$ ${item.price}`;
         category.innerText= item?.category;
     }
-    renderData();
+    renderTopData();
 
+    renderData('smallImages');
+    renderData('singlePage');
     function changeCost (){
         subtotal= item.price*quantity.value;
         price.innerText= `$ ${item.price*quantity.value}`;
@@ -231,7 +158,6 @@
         function addToCart(e){
             e.preventDefault();
             if(quantity.value==0) return;
-            if(item.price==subtotal) subtotal= item.price;
             const obj= {
                 id: item.id,
                 image: item.image,
@@ -250,16 +176,25 @@
             quantity.value= 1;
             price.innerText= `$ ${item.price}`;
             addToCartBtn.innerText= 'Added Successfully';
-            addToCartBtn.style.backgroundColor= '#bf2e34'
+            addToCartBtn.style.backgroundColor= '#eb346b'
             setTimeout(()=>{
                 addToCartBtn.innerText= 'Add To Cart';
                 addToCartBtn.style.backgroundColor= '#088178'
             },500);
-
-            console.log(JSON.parse(localStorage.getItem('cartItems')));
         }
         addToCartBtn.addEventListener('click',addToCart);
-
+        const product= document.querySelectorAll('.pro');
+product.forEach((eItem)=>{
+    eItem.addEventListener('click',()=>{
+        changeLocation(eItem);
+    })
+})
+const smallImages= document.querySelectorAll('.small-image-col');
+smallImages.forEach((eItem)=>{
+    eItem.addEventListener('click',()=>{
+        changeLocation(eItem);
+    })
+})
    </script>
 </body>
 </html>

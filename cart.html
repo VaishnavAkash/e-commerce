@@ -47,12 +47,7 @@
                 </tr>
             </thead>
             <tbody id="cartItemsContainer">
-                <tr>
-                    <div class="dummyItems" style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 0;">
-                        <h2>Add Some Items First 🙂</h2>
-                        <button  class="normal" style="background-color: aquamarine;"><a style="text-decoration: none; color: black;" href="shop.html">Go To Shop</a></button>
-                    </div>  
-                </tr>
+                
             </tbody>
         </table>
    </section>
@@ -151,6 +146,8 @@
         const removeIconsQS= document.querySelectorAll('.removeItem')
         removeIconsQS.forEach((eI)=>{
             eI.addEventListener('click',(e)=>{
+                    console.log(e.target.id);
+                    console.log('clicked');
                     removeCartItems(e.target.id);
             })
         })

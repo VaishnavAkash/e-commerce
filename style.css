@@ -629,8 +629,8 @@ footer .copyright{
     font-size: 0.8rem;
 }
 #mainImg{
-    width: 383.350px;
-    height: 511px; 
+    width: 100%;
+    height: 28rem; 
 } 
 .small-image-group{
     display: flex;
@@ -642,6 +642,10 @@ footer .copyright{
     cursor: pointer;
 }
 
+.small-image-col img{
+    width: 100%;
+    height: 70%;
+}
 #prodetails .single-pro-details h4{
     padding: 40px 0 20px 0;
 }
@@ -926,6 +930,17 @@ footer .copyright{
     color: red;
 }
 
+#shopButton{
+    transition: 0.3s ease;
+}
+
+#shopButton:hover{
+    color: white;
+    font-weight: bold;
+    scale: 1.05;
+    background-color: #eb346b !important
+}
+ 
 #cart table{
     width: 100%;
     border-collapse: collapse;

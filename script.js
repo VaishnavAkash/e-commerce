@@ -3,9 +3,12 @@ const close= document.getElementById('close');
 const nav= document.getElementById('navbar');
 const mainImage= document.getElementById('mainImg');
 const smallImg = document.querySelectorAll('.small-image');
-const idxProContainer= document.getElementsByClassName('pro-container')[0];
+const idxProContainer= document.getElementById('indexContainer');
+const idxProContainer2= document.getElementById('indexContainer2');
+const shopProContainer= document.getElementById('shopContainer');
+const singlePageContainer= document.getElementById('singlePageContainer');
+const smallImagesDiv= document.getElementById('smallImagesDiv');
 let cartItemsContainer= document.getElementById('cartItemsContainer');
-console.log(cartItemsContainer)
 // opening and closing the menu
 
 
@@ -14,7 +17,7 @@ console.log(cartItemsContainer)
 const data= [
     {
     "id": 1,
-    "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+    "title": "Men's Stylish Top",
     "price": 109.95,
     "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
     "category": "men's clothing",
@@ -66,7 +69,7 @@ const data= [
     "price": 56.99,
     "description": "Note:The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates",
     "category": "women's clothing",
-    "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
+    "image": "https://letsbuy24x7.com/wp-content/uploads/2021/05/100-linen-mens-shirts-long-sleeve-slim-fit-fading-dress-shirt-men-quality-social-business-shirts-male-camisa-chemise-ts-547.jpg",
     "rating": {
     "rate": 2.6,
     "count": 235
@@ -74,11 +77,11 @@ const data= [
     },
     {
     "id": 16,
-    "title": "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
+    "title": "Lock and Love Leather Jacket",
     "price": 29.95,
     "description": "100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON",
-    "category": "women's clothing",
-    "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
+    "category": "men's clothing",
+    "image": "https://m.media-amazon.com/images/I/61plieY-JwL._AC_UX342_.jpg",
     "rating": {
     "rate": 2.9,
     "count": 340
@@ -86,52 +89,28 @@ const data= [
     },
     {
     "id": 17,
-    "title": "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
+    "title": "Striped Women Raincoats",
     "price": 39.99,
     "description": "Lightweight perfet for trip or casual wear---Long sleeve with hooded, adjustable drawstring waist design. Button and zipper front closure raincoat, fully stripes Lined and The Raincoat has 2 side pockets are a good size to hold all kinds of things, it covers the hips, and the hood is generous but doesn't overdo it.Attached Cotton Lined Hood with Adjustable Drawstrings give it a real styled look.",
     "category": "women's clothing",
-    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
+    "image": "https://m.media-amazon.com/images/I/61QZYLYw7BL.jpg",
     "rating": {
     "rate": 3.8,
     "count": 679
     }
     },
     {
-    "id": 18,
-    "title": "MBJ Women's Solid Short Sleeve Boat Neck V ",
-    "price": 9.85,
-    "description": "95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem",
-    "category": "women's clothing",
-    "image": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
-    "rating": {
-    "rate": 4.7,
-    "count": 130
-    }
-    },
-    {
     "id": 19,
-    "title": "Opna Women's Short Sleeve Moisture",
+    "title": "Opna Women's Stylish Hoodie",
     "price": 7.95,
     "description": "100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort",
     "category": "women's clothing",
-    "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+    "image": "https://images.meesho.com/images/products/119449285/0lrs9_512.webp",
     "rating": {
     "rate": 4.5,
     "count": 146
     }
     },
-    {
-    "id": 20,
-    "title": "DANVOUY Womens T Shirt Casual Cotton Short",
-    "price": 12.99,
-    "description": "95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
-    "category": "women's clothing",
-    "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
-    "rating": {
-    "rate": 3.6,
-    "count": 145
-    }
-    }
     ]
 
 
@@ -158,29 +137,83 @@ for(let i of smallImg){
 
 // handling of opening product details page
 
-function renderData(){
-    data.map((eItem,idx)=>{
-    const tag= document.createElement('div');
-    tag.classList.add('pro');
-    tag.id= eItem.id;
-    tag.innerHTML= `
-    <img src=${eItem.image} alt="">
-    <div class="des">
-        <span>${eItem.category}</span>
-        <h5>${eItem.title}</h5>
-        <div class="star">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-        </div>
-        <h4>$ ${eItem.price}</h4>
-    </div>
-    <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>`
+function shuffleData(array){
+        for (let i = array.length - 1; i > 0; i--) {
+          // Generate a random index between 0 and i (inclusive)
+          const j = Math.floor(Math.random() * (i + 1));
+      
+          // Swap array[i] and array[j]
+          [array[i], array[j]] = [array[j], array[i]];
+    }
+}
 
-    idxProContainer.appendChild(tag);
+function renderData(container){
+//     data.map((eItem,idx)=>{
+//     const tag= document.createElement('div');
+//     tag.classList.add('pro');
+//     tag.id= eItem.id;
+//     tag.innerHTML= `
+//     <img src=${eItem.image} alt="">
+//     <div class="des">
+//         <span>${eItem.category}</span>
+//         <h5>${eItem.title}</h5>
+//         <div class="star">
+//             <i class="fas fa-star"></i>
+//             <i class="fas fa-star"></i>
+//             <i class="fas fa-star"></i>
+//             <i class="fas fa-star"></i>
+//             <i class="fas fa-star"></i>
+//         </div>
+//         <h4>$ ${eItem.price}</h4>
+//     </div>
+//     <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>`
+//     if(container=='home'){
+//         idxProContainer.appendChild(tag);
+//         idxProContainer2.appendChild(tag);
+//     }
+//     else if(container=='shop') shopProContainer.appendChild(tag);
+// })
+
+if(container=='smallImages'){
+    shuffleData(data);
+    const newArr= data.slice(0,4);
+    newArr.map((eItem,idx)=>{
+        let innerHTML=  `<div id=${eItem.id} class="small-image-col">
+        <img src=${eItem.image} alt=${eItem.id}>
+    </div>`
+        smallImagesDiv.innerHTML+= innerHTML;
+    })
+}
+else{
+
+    const newItems= data.map((eItem,idx)=>{
+        return `<div id=${eItem.id} class='pro'>
+        <img src=${eItem.image} alt="">
+         <div class="des">
+             <span>${eItem.category}</span>
+             <h5>${eItem.title}</h5>
+             <div class="star">
+             <i class="fas fa-star"></i>
+             <i class="fas fa-star"></i>
+                 <i class="fas fa-star"></i>
+                 <i class="fas fa-star"></i>
+                 <i class="fas fa-star"></i>
+             </div>
+           <h4>$ ${eItem.price}</h4>
+        </div>
+    </div>`
 })
+    if(container=='home'){
+        idxProContainer.innerHTML= newItems;    
+        idxProContainer2.innerHTML= newItems; 
+    }
+    else if(container=='shop') {
+        shopProContainer.innerHTML= newItems;   
+    }
+    else if(container=='singlePage'){
+        singlePageContainer.innerHTML= newItems;   
+    }
+}
 }
 
 function removeCartItems(id){
@@ -189,7 +222,6 @@ function removeCartItems(id){
         return eI.id!=id;
     })
     localStorage.setItem('cartItems',JSON.stringify(newItems));
-    renderCart();
 }
 function renderCart(){
     const items= JSON.parse(localStorage.getItem('cartItems'));
@@ -207,20 +239,21 @@ function renderCart(){
         <td>$ ${eItem.subTotal}</td>
         </tr>`
     })
-    let savedItems= JSON.parse(localStorage.getItem('cartItems'))
-   try{ if(savedItems){
-        const totalPrice=savedItems.reduce((acc,curr)=>{
-            console.log(acc.subTotal+curr.subTotal);
-            return acc.subTotal+curr.subTotal;  
-        })
-        totalCost.innerText= totalPrice; 
-    }}
-    catch(error){
-        console.log(error.message)
+    if(!items.length<=2){
+            const totalPrice=items.reduce((acc,curr)=>{
+                console.log(curr.subTotal);
+                // return Number(acc.subTotal+curr.subTotal);  
+            })
+        totalCost.innerText= (totalPrice);  
     }
-    if(items.length!=0) document.querySelector('.dummyItems').style.display= 'none'; 
-    else document.querySelector('.dummyItems').style.display= 'flex'; 
-    cartItemsContainer.innerHTML= newItems;
+    
+    if(newItems) cartItemsContainer.innerHTML= newItems;
+    else cartItemsContainer.innerHTML= `<tr>
+    <div class="dummyItems" style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 0;">
+        <h2>Add Some Items First 🙂</h2>
+        <a style="text-decoration: none; color: black;" href="shop.html"><button  class="normal " id="shopButton" style="background-color: aquamarine;">Go to Shop</button></a> 
+    </div>  
+</tr>` 
 }
 
 function changeLocation(eItem){
