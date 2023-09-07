@@ -19,7 +19,7 @@
                 <li><a  href="about.html">About</a></li>
                 <li><a  href="contact.html">Contact</a></li>
                 <li id="lg-bag"><a class="active" href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
-                <a href="#"><i id="close" class="fa-solid fa-xmark"></i>/a>
+                <a href="#"><i id="close" class="fa-solid fa-xmark"></i></a>
             </ul>
         </div>
         <div id="mobile">
@@ -46,7 +46,7 @@
                     <td>Subtotal</td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="cartItemsContainer">
                 <tr>
                     <td>
                         <a href=""><i class="far fa-times-circle"></i></a></i>
@@ -168,5 +168,11 @@
 
    <script src="https://kit.fontawesome.com/089ac27d12.js" crossorigin="anonymous"></script>
    <script src="script.js"></script>
+   <script>
+
+        const items= JSON.parse(localStorage.getItem('cartItems'));
+        console.log(items);
+        renderCart(items);
+   </script>
 </body>
 </html>

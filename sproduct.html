@@ -30,7 +30,7 @@
   
    <section id="prodetails" class="section-p1">
         <div class="single-pro-image">
-            <img src="img/products/f1.jpg" width="100%" id="mainImg" alt="">
+            <img src="https://i5.walmartimages.com/asr/b277ac73-be27-4ee8-b5ab-796e59b4f20a.2d67642919e472c10329daf19a6145e8.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF" width="100%" id="mainImg" alt="">
             <div class="small-image-group">
                 <div class="small-image-col">
                     <img src="img/products/f1.jpg" width="100%" class="small-image" alt="">
@@ -47,22 +47,22 @@
             </div>
         </div>
         
-        <div class="single-pro-details">
-            <h6>Home / T-shirt</h6>
-            <h4>Men's / Fashion T Shirt</h4>
-            <h2>$69.00</h2>
+        <form class="single-pro-details">
+            <h6 id="category">Home / T-shirt</h6>
+            <h4 id="proTitle">Men's / Fashion T Shirt</h4>
+            <h2 id="proPrice">$69.00</h2>
             <select name="" id="">
-                <option value="">Select Size</option>
+                <option value="">Select Size</option>   
                 <option value="xl">xl</option>
                 <option value="xxl">xxl</option>
                 <option value="small">Small</option>
                 <option value="large">Large</option>
             </select>
-            <input type="number" value="1"/>
-            <button class="normal">Add To Cart</button>
+            <input type="number" id="quantity" value="1"/>
+            <button type="submit" class="normal" id="addToCart">Add To Cart</button>
             <h4>Product Details</h4>
             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi cumque repudiandae assumenda quisquam excepturi veritatis rem, commodi magnam error a itaque. At accusantium quidem, labore temporibus sed nisi unde quis natus. Cumque laudantium natus quod suscipit corporis possimus expedita iusto et non laborum, quae distinctio asperiores incidunt ea. Reprehenderit, impedit.</span>
-        </div>
+        </form>
    </section>
 
    <section id="product1" class="section-p1">
@@ -203,5 +203,60 @@
    </footer>
    <script src="https://kit.fontawesome.com/089ac27d12.js" crossorigin="anonymous"></script>
    <script src="script.js"></script>
+   <script>
+       const img=document.getElementById('mainImg');
+       const category= document.getElementById('category');
+       const title= document.getElementById('proTitle');
+       const price= document.getElementById('proPrice');
+       const quantity= document.getElementById('quantity');
+       const item= JSON.parse(localStorage.getItem('selectedItem'))[0];
+       const addToCartBtn= document.getElementById('addToCart');
+    function renderData(){
+        console.log(item);
+        title.innerText= item?.title;
+        img.src= item?.image;
+        price.innerText= `$ ${item.price}`;
+        category.innerText= item?.category;
+    }
+    renderData();
+
+    function changeCost (){
+        price.innerText= `$ ${item.price*quantity.value}`;
+    }
+
+    quantity.addEventListener('input',changeCost);
+
+        function addToCart(e){
+            e.preventDefault();
+            if(quantity.value==0) return;
+            const obj= {
+                id: item.id,
+                image: item.image,
+                title: item.title,
+                price: item.price,
+                quantity: quantity.value,
+                subTotal: price.innerText
+            }
+            let cartItems=JSON.parse(localStorage.getItem('cartItems'));
+            cartItems= cartItems?cartItems:[];
+            console.log(cartItems);
+            console.log(typeof cartItems);
+            cartItems.push(obj);
+            localStorage.setItem('cartItems',JSON.stringify(cartItems));
+            console.log('submitted');
+            quantity.value= 1;
+            price.innerText= `$ ${item.price}`;
+            addToCartBtn.innerText= 'Added Successfully';
+            addToCartBtn.style.backgroundColor= '#bf2e34'
+            setTimeout(()=>{
+                addToCartBtn.innerText= 'Add To Cart';
+                addToCartBtn.style.backgroundColor= '#088178'
+            },500);
+
+            console.log(JSON.parse(localStorage.getItem('cartItems')));
+        }
+        addToCartBtn.addEventListener('click',addToCart);
+
+   </script>
 </body>
 </html>
