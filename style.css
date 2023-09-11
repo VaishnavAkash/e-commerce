@@ -620,7 +620,7 @@ footer .copyright{
 }
 
 #prodetails .single-pro-image{
-    width: 40%;
+    width: 30%;
     margin-right: 50px;
 }
 
@@ -922,11 +922,12 @@ footer .copyright{
     overflow-x: auto;
 }
 
-.fa-times-circle{
+.removeItem{
     color: #088178;
 }
 
-.fa-times-circle:hover{
+.removeItem:hover{
+    cursor: pointer;
     color: red;
 }
 

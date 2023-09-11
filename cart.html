@@ -29,15 +29,19 @@
     </section>
    </nav>
 
-   <section id="page-header" class="about-header">
-    <h2>#let's talk</h2>
+   <section id="page-header" style="background-image: url(./img/banner/b16.jpg); background-position: top;" class="about-header">
+    <h2>#happyShopping</h2>
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
    </section>
 
    <section id="cart" class="section-p1">
         <table width="100%">
             <thead>
-                <tr>
+                    <div id="dummyItems" style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 0; gap: 1rem;">
+                        <h2>Add Some Items First 🙂</h2>
+                        <a style="text-decoration: none; color: black;" href="shop.html"><button  class="normal " id="shopButton" style="background-color: aquamarine;">Go to Shop</button></a> 
+                    </div>
+                <tr id="headerItems">
                     <td>Remove</td>
                     <td>Image</td>
                     <td>Product</td>
@@ -57,7 +61,7 @@
         <h3>Apply Coupon</h3>
         <div>
             <input type="text" placeholder="Enter your Coupon">
-            <button class="normal">Apply</button>
+            <button id="couponBtn" class="normal">Apply</button>
         </div>
     </div>
     <div id="subtotal">
@@ -69,14 +73,14 @@
             </tr>
             <tr>
                 <td>Shipping</td>
-                <td>Free</td>
+                <td id="shippingCost">$ 0</td>
             </tr>
             <tr>
                 <td>Total</td>
-                <td>$ 0</td>
+                <td id="finalCost">$ 0</td>
             </tr>
         </table>
-        <button class="normal">Proceed To Checkout</button>
+        <button id="checkoutBtn" class="normal">Proceed To Checkout</button>
     </div>
    </section>
 
@@ -140,9 +144,21 @@
    <script src="https://kit.fontawesome.com/089ac27d12.js" crossorigin="anonymous"></script>
    <script src="script.js"></script>
    <script>
-        
         const items= JSON.parse(localStorage.getItem('cartItems'));
-        if(items) renderCart();
+        const dummyItems= document.getElementById('dummyItems');
+        const headerItems= document.getElementById('headerItems');
+        const CheckoutBtn= document.getElementById('checkoutBtn')
+        const couponBtn= document.getElementById('couponBtn');
+        if(items.length!=0){
+            dummyItems.style.display='none';
+            headerItems.style.visibility='visible'
+            renderCart();
+
+     
+        }else{
+            dummyItems.style.display= 'flex';
+            headerItems.style.visibility='hidden'
+        }
         const removeIconsQS= document.querySelectorAll('.removeItem')
         removeIconsQS.forEach((eI)=>{
             eI.addEventListener('click',(e)=>{
@@ -151,7 +167,15 @@
                     removeCartItems(e.target.id);
             })
         })
-        
+        CheckoutBtn.addEventListener('click',()=>{
+            CheckoutBtn.innerText= 'Redirecting ...'
+            CheckoutBtn.style.backgroundColor= '#eb346b'
+        })
+
+        couponBtn.addEventListener('click',()=>{
+            couponBtn.innerText= 'Verifying ...'
+            couponBtn.style.backgroundColor= '#eb346b';
+        })
    </script>
 </body>
 </html>

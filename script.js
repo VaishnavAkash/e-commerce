@@ -217,43 +217,43 @@ else{
 }
 
 function removeCartItems(id){
+    console.log('im in');
+    console.log(id);
     const cartItem= JSON.parse(localStorage.getItem('cartItems'));
     const newItems=cartItem.filter((eI)=>{
         return eI.id!=id;
     })
     localStorage.setItem('cartItems',JSON.stringify(newItems));
+    window.location.pathname= 'cart.html';
 }
 function renderCart(){
     const items= JSON.parse(localStorage.getItem('cartItems'));
     const cartItemsContainer = document.getElementById('cartItemsContainer');
     const totalCost= document.getElementById('totalCost');
+    const finalCost= document.getElementById('finalCost');
+    const shippingCost= document.getElementById('shippingCost')
     const newItems= items.map((eItem,idx)=>{
-        return `<tr>
+        return `<tr class='cartItems'>
         <td>
-        <a href="#"><i id=${eItem.id} class="far fa-times-circle removeItem"></i></a></i>
+        <i id=${eItem.id} class="far fa-times-circle removeItem"></i>
         </td>
         <td><img src=${eItem.image} alt=""></td>
         <td>${eItem.title}</td>
         <td>${eItem.price}$</td>
         <td><input type="number" value=${eItem.quantity} disabled></td>
-        <td>$ ${eItem.subTotal}</td>
+        <td>$ ${eItem.subTotal.toFixed(2)}</td>
         </tr>`
     })
-    if(!items.length<=2){
-            const totalPrice=items.reduce((acc,curr)=>{
-                console.log(curr.subTotal);
-                // return Number(acc.subTotal+curr.subTotal);  
-            })
-        totalCost.innerText= (totalPrice);  
-    }
-    
-    if(newItems) cartItemsContainer.innerHTML= newItems;
-    else cartItemsContainer.innerHTML= `<tr>
-    <div class="dummyItems" style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 0;">
-        <h2>Add Some Items First 🙂</h2>
-        <a style="text-decoration: none; color: black;" href="shop.html"><button  class="normal " id="shopButton" style="background-color: aquamarine;">Go to Shop</button></a> 
-    </div>  
-</tr>` 
+
+    cartItemsContainer.innerHTML= newItems;
+
+    const totalPrice=items.reduce((acc,curr)=>{
+            return acc+curr.subTotal;
+            },0)
+        totalCost.innerText= `$ ${totalPrice.toFixed(2)}`;  
+        const shipping= (totalPrice*10)/100;
+        shippingCost.innerText= `$ ${shipping.toFixed(2)}`;
+        finalCost.innerText=`$ ${(totalPrice+shipping).toFixed(2)}`;
 }
 
 function changeLocation(eItem){
@@ -267,55 +267,3 @@ function changeLocation(eItem){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* <div class="single-pro-details">
-<h6 id="category">Home / T-shirt</h6>
-<h4 id="proTitle">Men's / Fashion T Shirt</h4>
-<h2 id="proPrice">$69.00</h2>
-<select name="" id="">
-    <option value="">Select Size</option>
-    <option value="xl">xl</option>
-    <option value="xxl">xxl</option>
-    <option value="small">Small</option>
-    <option value="large">Large</option>
-</select>
-<input type="number" id="quantity" value="1"/>
-<button class="normal" id="addToCart">Add To Cart</button>
-<h4>Product Details</h4>
-<span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi cumque repudiandae assumenda quisquam excepturi veritatis rem, commodi magnam error a itaque. At accusantium quidem, labore temporibus sed nisi unde quis natus. Cumque laudantium natus quod suscipit corporis possimus expedita iusto et non laborum, quae distinctio asperiores incidunt ea. Reprehenderit, impedit.</span>
-</div> */}

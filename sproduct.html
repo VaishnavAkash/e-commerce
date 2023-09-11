@@ -36,19 +36,18 @@
             </div>
         </div>
         
-        <form class="single-pro-details">
+        <form class="single-pro-details" onsubmit="cart.html">
             <h6 id="category">Home / T-shirt</h6>
             <h4 id="proTitle">Men's / Fashion T Shirt</h4>
             <h2 id="proPrice">$69.00</h2>
-            <select name="" id="">
-                <option value="">Select Size</option>   
-                <option value="xl">xl</option>
-                <option value="xxl">xxl</option>
+            <select name="" id="" required> 
+                <option value="xl">XL</option>
+                <option value="xxl">XXL</option>
                 <option value="small">Small</option>
                 <option value="large">Large</option>
             </select>
             <input type="number" id="quantity" value="1"/>
-            <button type="submit" class="normal" id="addToCart">Add To Cart</button>
+            <button class="normal" id="addToCart">Add To Cart</button>
             <h4>Product Details</h4>
             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi cumque repudiandae assumenda quisquam excepturi veritatis rem, commodi magnam error a itaque. At accusantium quidem, labore temporibus sed nisi unde quis natus. Cumque laudantium natus quod suscipit corporis possimus expedita iusto et non laborum, quae distinctio asperiores incidunt ea. Reprehenderit, impedit.</span>
         </form>
@@ -137,6 +136,8 @@
        const quantity= document.getElementById('quantity');
        const item= JSON.parse(localStorage.getItem('selectedItem'))[0];
        const addToCartBtn= document.getElementById('addToCart');
+       const buttonCart= document.getElementById('buttonCart');
+       let isAdded= false;
        let subtotal= item.price;
     function renderTopData(){
         title.innerText= item?.title;
@@ -150,21 +151,24 @@
     renderData('singlePage');
     function changeCost (){
         subtotal= item.price*quantity.value;
-        price.innerText= `$ ${item.price*quantity.value}`;
+        
+        price.innerText= `$ ${subtotal.toFixed(2)}`;
+
     }
 
     quantity.addEventListener('input',changeCost);
 
         function addToCart(e){
             e.preventDefault();
-            if(quantity.value==0) return;
-            const obj= {
+            if(!isAdded){
+                if(quantity.value==0) return;
+                const obj= {
                 id: item.id,
                 image: item.image,
                 title: item.title,
                 price: item.price,
                 quantity: quantity.value,
-                subTotal: subtotal
+                subTotal: subtotal,
             }
             let cartItems=JSON.parse(localStorage.getItem('cartItems'));
             cartItems= cartItems?cartItems:[];
@@ -175,12 +179,16 @@
             console.log('submitted');
             quantity.value= 1;
             price.innerText= `$ ${item.price}`;
-            addToCartBtn.innerText= 'Added Successfully';
+            addToCartBtn.innerText= 'Go to Cart';
             addToCartBtn.style.backgroundColor= '#eb346b'
-            setTimeout(()=>{
-                addToCartBtn.innerText= 'Add To Cart';
-                addToCartBtn.style.backgroundColor= '#088178'
-            },500);
+            isAdded= true;
+            quantity.disabled= true;  
+              
+        }
+        else{
+            console.log('hi im inside true')
+            window.location.pathname= 'cart.html';
+        }
         }
         addToCartBtn.addEventListener('click',addToCart);
         const product= document.querySelectorAll('.pro');
