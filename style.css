@@ -11,7 +11,7 @@
 body{
     width: 100vw;
     margin-top: 72px;
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
 }
 h1,h2,h3{
     color: #222;
@@ -158,6 +158,13 @@ button.white{
     color: #088178;
 }
 
+#shopNowBtn{
+    text-decoration: none;
+    color: #088178;
+}
+#shopNowBtn:hover{
+    color: #eb346b;
+}
 #hero button{
     background-image: url('img/button.png');
     color: #088178;
