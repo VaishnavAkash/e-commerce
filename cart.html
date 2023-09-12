@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 </head>
 <body>
 
@@ -34,13 +36,13 @@
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
    </section>
 
-   <section id="cart" class="section-p1">
+   <section id="cart" class="section-p1" data-aos="zoom-in">
+    <div id="dummyItems" style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 0; gap: 1rem;">
+        <h2>Add Some Items First 🙂</h2>
+        <a style="text-decoration: none; color: black;" href="shop.html"><button  class="normal " id="shopButton" style="background-color: aquamarine;">Go to Shop</button></a> 
+    </div>
         <table width="100%">
             <thead>
-                    <div id="dummyItems" style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 0; gap: 1rem;">
-                        <h2>Add Some Items First 🙂</h2>
-                        <a style="text-decoration: none; color: black;" href="shop.html"><button  class="normal " id="shopButton" style="background-color: aquamarine;">Go to Shop</button></a> 
-                    </div>
                 <tr id="headerItems">
                     <td>Remove</td>
                     <td>Image</td>
@@ -57,14 +59,14 @@
    </section>
 
    <section id="cart-add" class="section-p1">
-    <div id="coupon">
+    <div id="coupon" data-aos="slide-left">
         <h3>Apply Coupon</h3>
         <div>
             <input type="text" placeholder="Enter your Coupon">
             <button id="couponBtn" class="normal">Apply</button>
         </div>
     </div>
-    <div id="subtotal">
+    <div id="subtotal" data-aos="slide-right">
         <h3>Cart Totals</h3>
         <table>
             <tr>
@@ -143,7 +145,14 @@
 
    <script src="https://kit.fontawesome.com/089ac27d12.js" crossorigin="anonymous"></script>
    <script src="script.js"></script>
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
    <script>
+    AOS.init({
+        offset: 200, 
+        duration: 1000, 
+        easing: 'ease',
+
+    });
         const items= JSON.parse(localStorage.getItem('cartItems'));
         const dummyItems= document.getElementById('dummyItems');
         const headerItems= document.getElementById('headerItems');

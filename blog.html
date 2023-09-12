@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 </head>
 <body>
    <nav>
@@ -33,7 +35,7 @@
    </section>
 
     <section id="blog">
-        <div class="blog-box">
+        <div class="blog-box" data-aos="slide-left">
             <div class="blog-image">
                 <img src="img/blog/b1.jpg" alt="">
             </div>
@@ -44,7 +46,7 @@
             </div>
             <h1>13/01</h1>
         </div>
-        <div class="blog-box">
+        <div class="blog-box" data-aos="slide-right" style="flex-direction: row-reverse;">
             <div class="blog-image">
                 <img src="img/blog/b2.jpg" alt="">
             </div>
@@ -55,7 +57,7 @@
             </div>
             <h1>13/01</h1>
         </div>
-        <div class="blog-box">
+        <div class="blog-box" data-aos="slide-left">
             <div class="blog-image">
                 <img src="img/blog/b3.jpg" alt="">
             </div>
@@ -66,7 +68,7 @@
             </div>
             <h1>13/01</h1>
         </div>
-        <div class="blog-box">
+        <div class="blog-box" data-aos="slide-right" style="flex-direction: row-reverse;">
             <div class="blog-image">
                 <img src="img/blog/b4.jpg" alt="">
             </div>
@@ -77,7 +79,7 @@
             </div>
             <h1>13/01</h1>
         </div>
-        <div class="blog-box">
+        <div class="blog-box" data-aos="slide-left">
             <div class="blog-image">
                 <img src="img/blog/b5.jpg" alt="">
             </div>
@@ -107,7 +109,7 @@
     </div>
 </section>
 
-<footer class="section-p1">
+<footer class="section-p1" data-aos="slide-up">
     <div class="footer-items">
     <div class="col">
         <img src="img/logo.png" class="logo" alt="">
@@ -164,5 +166,14 @@
 
    <script src="https://kit.fontawesome.com/089ac27d12.js" crossorigin="anonymous"></script>
    <script src="script.js"></script>
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+   <script>
+        AOS.init({
+            offset: 100, 
+            duration: 1000, 
+            easing: 'ease',
+
+        });
+    </script>
 </body>
 </html>

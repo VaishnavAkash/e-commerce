@@ -186,8 +186,8 @@ if(container=='smallImages'){
 }
 else{
 
-    const newItems= data.map((eItem,idx)=>{
-        return `<div id=${eItem.id} class='pro'>
+    const newItems= data.map((eItem)=>{
+        return `<div id=${eItem.id} class="pro"  data-aos="fade">
         <img src=${eItem.image} alt="">
          <div class="des">
              <span>${eItem.category}</span>
@@ -233,7 +233,7 @@ function renderCart(){
     const finalCost= document.getElementById('finalCost');
     const shippingCost= document.getElementById('shippingCost')
     const newItems= items.map((eItem,idx)=>{
-        return `<tr class='cartItems'>
+        return `<tr class='cartItems data-aos="fade"'>
         <td>
         <i id=${eItem.id} class="far fa-times-circle removeItem"></i>
         </td>
