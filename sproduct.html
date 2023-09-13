@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 </head>
 <body>
    <nav>
@@ -28,15 +30,15 @@
     </section>
    </nav>
   
-   <section id="prodetails" class="section-p1">
-        <div class="single-pro-image">
+   <section id="prodetails" class="section-p1" >
+        <div class="single-pro-image" data-aos="slide-right">
             <img src="https://i5.walmartimages.com/asr/b277ac73-be27-4ee8-b5ab-796e59b4f20a.2d67642919e472c10329daf19a6145e8.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF" width="100%" id="mainImg" alt="">
             <div class="small-image-group" id="smallImagesDiv">
                
             </div>
         </div>
         
-        <form class="single-pro-details" onsubmit="cart.html">
+        <form class="single-pro-details" onsubmit="cart.html" data-aos="slide-left">
             <h6 id="category">Home / T-shirt</h6>
             <h4 id="proTitle">Men's / Fashion T Shirt</h4>
             <h2 id="proPrice">$69.00</h2>
@@ -53,7 +55,7 @@
         </form>
    </section>
 
-   <section id="product1" class="section-p1">
+   <section id="product1" class="section-p1" data-aos="fade-up">
     <h2>Featured Product</h2>
     <p>Summer Collection New Morden Design</p>
     <div class="pro-container" id="singlePageContainer">
@@ -72,7 +74,7 @@
     </div>
 </section>
 
-<footer class="section-p1">
+<footer class="section-p1" data-aos="slide-up">
     <div class="footer-items">
     <div class="col">
         <img src="img/logo.png" class="logo" alt="">
@@ -128,7 +130,14 @@
    </footer>
    <script src="https://kit.fontawesome.com/089ac27d12.js" crossorigin="anonymous"></script>
    <script src="script.js"></script>
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
    <script>
+    AOS.init({
+        offset: 200, 
+        duration: 500, 
+        easing: 'ease',
+
+    });
        const img=document.getElementById('mainImg');
        const category= document.getElementById('category');
        const title= document.getElementById('proTitle');

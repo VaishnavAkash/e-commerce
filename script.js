@@ -14,6 +14,17 @@ let cartItemsContainer= document.getElementById('cartItemsContainer');
 
 // Products data
 
+// window.addEventListener('scroll',(e)=>{
+//     if(window.scrollY>50){
+//         document.getElementById('header').style.backdropFilter= 'blur(1rem)';
+//         console.log('scrolled')
+//     }
+//     else{
+//         document.getElementById('header').style.backdropFilter='inherit';
+//         console.log('at top')
+//     }
+// })
+
 const data= [
     {
     "id": 1,
@@ -187,7 +198,7 @@ if(container=='smallImages'){
 else{
 
     const newItems= data.map((eItem)=>{
-        return `<div id=${eItem.id} class="pro"  data-aos="fade">
+        return `<div id=${eItem.id} class="pro" data-aos="fade">
         <img src=${eItem.image} alt="">
          <div class="des">
              <span>${eItem.category}</span>
